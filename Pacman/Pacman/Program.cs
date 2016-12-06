@@ -1,16 +1,11 @@
-﻿
-using System;
-using System.Collections.Generic;
-using OperationManager.Startegy;
-
-namespace PacmanOutput
+﻿namespace PacmanGame
 {
     class Program
     {
         static void Main(string[] args)
         {
-        }
+            var pacmans = TheFirstGeneration.GetTheFistGeneration();
 
-    
+        }
     }
 }

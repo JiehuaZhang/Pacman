@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacmanOutput", "Pacman\PacmanOutput.csproj", "{3F1F9233-6C9C-4106-8A27-75ECCDCD0A5E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacmanGame", "Pacman\PacmanGame.csproj", "{3F1F9233-6C9C-4106-8A27-75ECCDCD0A5E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonType", "CommonType\CommonType.csproj", "{C1E3E740-1898-4EEB-8F04-3F74EE8BE604}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperationManager", "OperationManager\OperationManager.csproj", "{0E373F9B-F791-4A7E-B497-E8DEEB63E976}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Output", "Output\Output.csproj", "{ECA6F399-084A-40B7-97EF-3B5ACCB4D075}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{0E373F9B-F791-4A7E-B497-E8DEEB63E976}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E373F9B-F791-4A7E-B497-E8DEEB63E976}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E373F9B-F791-4A7E-B497-E8DEEB63E976}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECA6F399-084A-40B7-97EF-3B5ACCB4D075}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECA6F399-084A-40B7-97EF-3B5ACCB4D075}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECA6F399-084A-40B7-97EF-3B5ACCB4D075}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECA6F399-084A-40B7-97EF-3B5ACCB4D075}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
