@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using CommonType;
-
-namespace OperationManager.Startegy
+﻿namespace OperationManager.StrategyManager
 {
     public static class GenerateSituationArray
     {

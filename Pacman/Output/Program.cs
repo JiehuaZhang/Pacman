@@ -1,5 +1,7 @@
 ﻿using System;
-using OperationManager.Startegy;
+using System.Linq;
+using OperationManager.CheckerManager;
+using OperationManager.StrategyManager;
 
 namespace Output
 {
@@ -17,6 +19,15 @@ namespace Output
                     break;
                 case "2":
                     OutputStrategyArray();
+                    break;
+                case "3":
+                    OutputEmptyChecker();
+                    break;
+                case "4":
+                    OutputRandomBeans();
+                    break;
+                case "5":
+                    OutputRandomBeanChecker();
                     break;
                 default:
                     Console.WriteLine("Enter the right number.");
@@ -39,6 +50,43 @@ namespace Output
             foreach (var l in startegy.Lines)
             {
                 Console.WriteLine($"{l.Key}:{l.Value}");
+            }
+        }
+
+        private static void OutputEmptyChecker()
+        {
+            var checker = GenerateChecker.GenerateEmptyChecker();
+            foreach (var key in checker.Checks.Keys)
+            {
+                Console.WriteLine($"{key.Position[0]}:{key.Position[1]}");
+            }
+        }
+
+        private static void OutputRandomBeans()
+        {
+            var list = SprinkleBeans.GetRandomSprinkleBeansPosition();
+            var i = 0;
+            foreach (var l in list)
+            {
+                Console.WriteLine($"{i}   {l[0]}:{l[1]}");
+                i++;
+            }
+        }
+
+        private static void OutputRandomBeanChecker()
+        {
+            var checker = GenerateChecker.GenerateEmptyChecker();
+            var list = SprinkleBeans.GetRandomSprinkleBeansPosition();
+            var i = 0;
+            foreach (var l in list.OrderBy(x=>x[0]).ThenBy(x=>x[1]).ToArray())
+            {
+                Console.WriteLine($"{i}   {l[0]}:{l[1]}");
+                i++;
+            }
+            GenerateChecker.GenerateRandomBeanChecker(ref checker,list);
+            foreach (var key in checker.Checks.Keys)
+            {
+                Console.WriteLine($"{key.Position[0]}:{key.Position[1]}--[{checker.Checks[key][0]}][{checker.Checks[key][1]}][{checker.Checks[key][2]}][{checker.Checks[key][3]}][{checker.Checks[key][4]}]");
             }
         }
     }

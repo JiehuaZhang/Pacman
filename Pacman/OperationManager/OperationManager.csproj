@@ -40,8 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Startegy\GenerateStartegy.cs" />
-    <Compile Include="Startegy\GenerateSituationArray.cs" />
+    <Compile Include="CheckerManager\GenerateChecker.cs" />
+    <Compile Include="CheckerManager\SprinkleBeans.cs" />
+    <Compile Include="Helper\IntHelper.cs" />
+    <Compile Include="StrategyManager\GenerateStartegy.cs" />
+    <Compile Include="StrategyManager\GenerateSituationArray.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
