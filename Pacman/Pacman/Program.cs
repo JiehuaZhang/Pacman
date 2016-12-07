@@ -4,8 +4,8 @@
     {
         static void Main(string[] args)
         {
-            var pacmans = TheFirstGeneration.GetTheFistGeneration();
-
+            var pacmans = TheFirstGeneration.PlayGame();
+            var nextGenerationPacmans = Reproduce.GetNextGenerationPacmans(pacmans);
         }
     }
 }

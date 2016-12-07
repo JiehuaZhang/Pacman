@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
 using CommonType;
+using OperationManager.GameManager;
 using OperationManager.StrategyManager;
 
 namespace PacmanGame
 {
     public static class TheFirstGeneration
     {
-        public static List<Pacman> GetTheFistGeneration()
+        public static List<Pacman> PlayGame()
         {
             var pacmans = Get200NewPacman();
-            RunTheGameGetPoints(ref pacmans);
-            GetRankingAndWeight(ref pacmans);
+            RunTheGame.GetPoints(ref pacmans);
+            GameResult.GetRankingAndWeight(ref pacmans);
             return pacmans;
         }
 
@@ -26,19 +27,6 @@ namespace PacmanGame
                 newPacmans.Add(p);
             }
             return newPacmans;
-        }
-
-        public static void RunTheGameGetPoints(ref List<Pacman> pacmans)
-        {
-            foreach (var p in pacmans)
-            {
-                
-            }
-        }
-
-        public static void GetRankingAndWeight(ref List<Pacman> pacmans)
-        {
-            
         }
     }
 }

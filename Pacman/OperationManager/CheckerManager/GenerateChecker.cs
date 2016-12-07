@@ -40,7 +40,7 @@ namespace OperationManager.CheckerManager
             return checker;
         }
 
-        public static void GenerateRandomBeanChecker(ref Checker checker, List<int[]> beanPosition)
+        public static void GenerateInitialChecker(ref Checker checker, List<int[]> beanPosition)
         {
             foreach (var position in checker.Checks.Keys.Where(position => beanPosition.Any(x => x.SequenceEqual(position.Position))))
             {

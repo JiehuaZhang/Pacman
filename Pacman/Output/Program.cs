@@ -66,9 +66,9 @@ namespace Output
         {
             var list = SprinkleBeans.GetRandomSprinkleBeansPosition();
             var i = 0;
-            foreach (var l in list)
+            foreach (var p in list)
             {
-                Console.WriteLine($"{i}   {l[0]}:{l[1]}");
+                Console.WriteLine($"{i}   {p[0]}:{p[1]}");
                 i++;
             }
         }
@@ -83,7 +83,7 @@ namespace Output
                 Console.WriteLine($"{i}   {l[0]}:{l[1]}");
                 i++;
             }
-            GenerateChecker.GenerateRandomBeanChecker(ref checker,list);
+            GenerateChecker.GenerateInitialChecker(ref checker,list);
             foreach (var key in checker.Checks.Keys)
             {
                 Console.WriteLine($"{key.Position[0]}:{key.Position[1]}--[{checker.Checks[key][0]}][{checker.Checks[key][1]}][{checker.Checks[key][2]}][{checker.Checks[key][3]}][{checker.Checks[key][4]}]");
