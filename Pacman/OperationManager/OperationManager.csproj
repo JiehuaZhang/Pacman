@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="CheckerManager\GenerateChecker.cs" />
     <Compile Include="CheckerManager\SprinkleBeans.cs" />
+    <Compile Include="GameManager\GameResult.cs" />
+    <Compile Include="GameManager\RunTheGame.cs" />
     <Compile Include="Helper\IntHelper.cs" />
     <Compile Include="StrategyManager\GenerateStartegy.cs" />
     <Compile Include="StrategyManager\GenerateSituationArray.cs" />

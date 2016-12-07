@@ -6,6 +6,7 @@
         {
             var pacmans = TheFirstGeneration.PlayGame();
             var nextGenerationPacmans = Reproduce.GetNextGenerationPacmans(pacmans);
+            StartGame.Start(ref nextGenerationPacmans);
         }
     }
 }

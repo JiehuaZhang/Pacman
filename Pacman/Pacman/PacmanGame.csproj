@@ -43,8 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NextGeneration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reproduce.cs" />
+    <Compile Include="StartGame.cs" />
     <Compile Include="TheFirstGeneration.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -59,6 +62,9 @@
       <Project>{0e373f9b-f791-4a7e-b497-e8deeb63e976}</Project>
       <Name>OperationManager</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

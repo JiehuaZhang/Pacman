@@ -10,8 +10,7 @@ namespace PacmanGame
         public static List<Pacman> PlayGame()
         {
             var pacmans = Get200NewPacman();
-            RunTheGame.GetPoints(ref pacmans);
-            GameResult.GetRankingAndWeight(ref pacmans);
+            StartGame.Start(ref pacmans);
             return pacmans;
         }
 

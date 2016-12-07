@@ -5,6 +5,8 @@ namespace CommonType
     public class CheckPosition : IEquatable<CheckPosition>
     {
         public int[] Position { get; set; }
+
+
         public  bool Equals(CheckPosition obj)
         {
             if (ReferenceEquals(null, obj)) return false;
