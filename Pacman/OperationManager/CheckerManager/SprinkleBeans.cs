@@ -28,16 +28,9 @@ namespace OperationManager.CheckerManager
         private static int[] GenerateBeanPosition(Random rnd)
         {
             var n = rnd.Next(11, 111);
-            var arr = n.DigitArr();
-            if (arr.Length == 3)
-            {
-                arr = new[] {10, arr[2] == 0 ? 10 : arr[2]};
-            }
-            else
-            {
-                arr = arr[1] == 0 ? new[] {arr[0] - 1, 10} : arr;
-            }
-            return arr;
+            return IntHelper.FindPositionFromRandomNumber(n);
         }
+
+        
     }
 }

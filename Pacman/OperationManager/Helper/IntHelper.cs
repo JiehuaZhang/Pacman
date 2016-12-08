@@ -21,5 +21,19 @@ namespace OperationManager.Helper
             Array.Reverse(arr);
             return arr;
         }
+
+        public static int[] FindPositionFromRandomNumber(int n)
+        {
+            var arr = n.DigitArr();
+            if (arr.Length == 3)
+            {
+                arr = new[] { 10, arr[2] == 0 ? 10 : arr[2] };
+            }
+            else
+            {
+                arr = arr[1] == 0 ? new[] { arr[0] - 1, 10 } : arr;
+            }
+            return arr;
+        }
     }
 }

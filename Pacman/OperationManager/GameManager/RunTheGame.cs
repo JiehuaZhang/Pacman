@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CommonType;
+using OperationManager.Helper;
 using OperationManager.Interface;
 
 namespace OperationManager.GameManager
@@ -14,9 +15,14 @@ namespace OperationManager.GameManager
         {
             foreach (var p in pacmans)
             {
-
+                var position = FindStartCheck();
             }
         }
 
+        private CheckPosition FindStartCheck()
+        {
+            var rnd = new Random();
+            return new CheckPosition {Position = IntHelper.FindPositionFromRandomNumber(rnd.Next(1, 101))};
+        }
     }
 }
