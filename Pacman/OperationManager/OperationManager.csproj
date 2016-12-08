@@ -45,6 +45,10 @@
     <Compile Include="GameManager\GameResult.cs" />
     <Compile Include="GameManager\RunTheGame.cs" />
     <Compile Include="Helper\IntHelper.cs" />
+    <Compile Include="Interface\IGameResult.cs" />
+    <Compile Include="Interface\IRunTheGame.cs" />
+    <Compile Include="Interface\IStoreData.cs" />
+    <Compile Include="StoreDataManager\StoreData.cs" />
     <Compile Include="StrategyManager\GenerateStartegy.cs" />
     <Compile Include="StrategyManager\GenerateSituationArray.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -55,6 +59,7 @@
       <Name>CommonType</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
