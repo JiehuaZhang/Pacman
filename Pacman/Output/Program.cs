@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Linq;
 using OperationManager.CheckerManager;
+using OperationManager.GameManager;
+using OperationManager.StoreDataManager;
 using OperationManager.StrategyManager;
 
 namespace Output
 {
     class Program
     {
+        private static readonly GenerateChecker GenerateChecker = new GenerateChecker();
         static void Main(string[] args)
         {
 
@@ -75,7 +78,6 @@ namespace Output
 
         private static void OutputRandomBeanChecker()
         {
-            var checker = GenerateChecker.GenerateEmptyChecker();
             var list = SprinkleBeans.GetRandomSprinkleBeansPosition();
             var i = 0;
             foreach (var l in list.OrderBy(x=>x[0]).ThenBy(x=>x[1]).ToArray())
@@ -83,7 +85,7 @@ namespace Output
                 Console.WriteLine($"{i}   {l[0]}:{l[1]}");
                 i++;
             }
-            GenerateChecker.GenerateInitialChecker(ref checker,list);
+            var checker= GenerateChecker.GenerateInitialChecker();
             foreach (var key in checker.Checks.Keys)
             {
                 Console.WriteLine($"{key.Position[0]}:{key.Position[1]}--[{checker.Checks[key][0]}][{checker.Checks[key][1]}][{checker.Checks[key][2]}][{checker.Checks[key][3]}][{checker.Checks[key][4]}]");

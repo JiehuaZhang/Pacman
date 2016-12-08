@@ -1,3 +1,0 @@
-G1_Stratety.csv	
-G1_Pacman.csv	
-G1_Checker.csv	

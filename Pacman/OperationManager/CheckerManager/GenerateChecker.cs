@@ -4,9 +4,9 @@ using CommonType;
 
 namespace OperationManager.CheckerManager
 {
-    public static  class GenerateChecker
+    public  class GenerateChecker
     {
-        public static Checker GenerateEmptyChecker()
+        public  Checker GenerateEmptyChecker()
         {
             var checker = new Checker();
             var dic = new Dictionary<CheckPosition, int[]>();
@@ -40,8 +40,10 @@ namespace OperationManager.CheckerManager
             return checker;
         }
 
-        public static void GenerateInitialChecker(ref Checker checker, List<int[]> beanPosition)
+        public Checker GenerateInitialChecker()
         {
+            var checker = GenerateEmptyChecker();
+            var beanPosition = SprinkleBeans.GetRandomSprinkleBeansPosition();
             foreach (var position in checker.Checks.Keys.Where(position => beanPosition.Any(x => x.SequenceEqual(position.Position))))
             {
                 checker.Checks[position][4] = 1;
@@ -101,6 +103,7 @@ namespace OperationManager.CheckerManager
                     checker.Checks[key][3] = CheckOtherSituation(3, key.Position, checker);
                 }
             }
+            return checker;
 
         }
 

@@ -8,6 +8,7 @@ namespace CommonType
 {
     public class Checker
     {
+        public string ID { get; set; }
         public Dictionary<CheckPosition, int[]> Checks { get; set; } 
     }
 }

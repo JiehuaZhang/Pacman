@@ -12,5 +12,6 @@ namespace CommonType
         public Strategy Strategy { get; set; }
         public int Ranking { get; set; }
         public int Weight { get; set; }
+        public string CheckerID { get; set; }
     }
 }

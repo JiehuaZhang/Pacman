@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CommonType;
+using OperationManager.Interface;
 
 namespace OperationManager.GameManager
 {
-    public static class RunTheGame
+    public  class RunTheGame : IRunTheGame
     {
-        public static void GetPoints(ref List<Pacman> pacmans)
+        public  void GetPoints(ref List<Pacman> pacmans, Checker checker)
         {
             foreach (var p in pacmans)
             {

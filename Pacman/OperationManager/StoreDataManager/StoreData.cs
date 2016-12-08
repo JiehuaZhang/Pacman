@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using CommonType;
 using OperationManager.Interface;
 
-namespace OperationManager.GameManager
+namespace OperationManager.StoreDataManager
 {
-    public  class GameResult :IGameResult
+    public class StoreData : IStoreData
     {
-        public  void GetRankingAndWeight(ref List<Pacman> pacmans)
+        public void StoreGameResult(List<Pacman> pacmans, Checker checker)
         {
-
+            
         }
     }
 }
