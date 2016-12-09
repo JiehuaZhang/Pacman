@@ -9,6 +9,6 @@ namespace OperationManager.Interface
 {
     public interface IStoreData
     {
-        void StoreGameResult(List<Pacman> pacmans, Checker checker);
+        void StoreGameResult(Pacman[] pacmans, Checker checker);
     }
 }

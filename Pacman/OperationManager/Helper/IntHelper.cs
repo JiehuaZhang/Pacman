@@ -35,5 +35,11 @@ namespace OperationManager.Helper
             }
             return arr;
         }
+
+        public static int GetRandomAction()
+        {
+            var rnd = new Random();
+            return rnd.Next(7);
+        }
     }
 }

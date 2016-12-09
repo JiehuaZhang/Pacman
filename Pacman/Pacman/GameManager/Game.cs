@@ -18,11 +18,15 @@ namespace PacmanGame.GameManager
             _runTheGame = runTheGame;
             _gameResult = gameResult;
         }
-        public void Run(List<Pacman> pacmans, Checker checker)
+        public void Run(Pacman[] pacmans, List<Checker> checkers)
         {
-            _runTheGame.GetPoints(ref pacmans, checker);
-            _gameResult.GetRankingAndWeight(ref pacmans);
-            _storeData.StoreGameResult(pacmans, checker);
+            foreach (var checker in checkers)
+            {
+                _runTheGame.GetPoints(ref pacmans, checker);
+                _gameResult.GetRankingAndWeight(ref pacmans);
+                _storeData.StoreGameResult(pacmans, checker);
+            }
+
         }
     }
 }

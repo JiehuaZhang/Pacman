@@ -40,6 +40,16 @@ namespace OperationManager.CheckerManager
             return checker;
         }
 
+        public List<Checker> Generate1000Checkers()
+        {
+            var checkers = new List<Checker>();
+            for (var i = 0; i < 1000; i++)
+            {
+              checkers.Add(  GenerateInitialChecker());
+            }
+            return checkers;
+        } 
+
         public Checker GenerateInitialChecker()
         {
             var checker = GenerateEmptyChecker();

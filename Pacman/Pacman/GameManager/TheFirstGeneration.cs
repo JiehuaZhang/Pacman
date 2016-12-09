@@ -16,19 +16,19 @@ namespace PacmanGame.GameManager
         }
         public void Play()
         {
-            _game.Run(Get200NewPacman(), _generateChecker.GenerateInitialChecker());
+            _game.Run(Get200NewPacman(), _generateChecker.Generate1000Checkers());
         }
 
-        private static List<Pacman> Get200NewPacman()
+        private static Pacman[] Get200NewPacman()
         {
-            var newPacmans = new List<Pacman>();
+            var newPacmans = new Pacman[] {};
             for (var i = 0; i < 200; i++)
             {
                 var p = new Pacman
                 {
                     Strategy = GenerateStartegy.FillRandomActionToSituation(GenerateSituationArray.GetSituationArray())
                 };
-                newPacmans.Add(p);
+                newPacmans[i] =p;
             }
             return newPacmans;
         } 

@@ -6,9 +6,9 @@ namespace PacmanGame.GameManager
     public  class Reproduce
     {
 
-        public List<Pacman> GetNextGenerationPacmans(List<Pacman> lastGenerationPacmans)
+        public Pacman[] GetNextGenerationPacmans(Pacman[] lastGenerationPacmans)
         {
-            var newGenearationPacman =new List<Pacman>();
+            var newGenearationPacman =new Pacman[] {};
             //todo
             return newGenearationPacman;
         } 

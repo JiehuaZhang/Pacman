@@ -10,7 +10,7 @@ namespace OperationManager.GameManager
 {
     public  class GameResult :IGameResult
     {
-        public  void GetRankingAndWeight(ref List<Pacman> pacmans)
+        public  void GetRankingAndWeight(ref Pacman[] pacmans)
         {
 
         }

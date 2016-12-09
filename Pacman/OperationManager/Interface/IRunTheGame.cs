@@ -9,6 +9,6 @@ namespace OperationManager.Interface
 {
     public interface IRunTheGame
     {
-        void GetPoints(ref List<Pacman> pacmans, Checker checker);
+        void GetPoints(ref Pacman[] pacmans, Checker checker);
     }
 }

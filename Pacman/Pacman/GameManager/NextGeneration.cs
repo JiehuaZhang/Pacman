@@ -18,12 +18,12 @@ namespace PacmanGame.GameManager
 
         public void Play()
         {
-            _game.Run(_reproduce.GetNextGenerationPacmans(GetLastGenerationPacmans()), _generateChecker.GenerateInitialChecker());
+            _game.Run(_reproduce.GetNextGenerationPacmans(GetLastGenerationPacmans()), _generateChecker.Generate1000Checkers());
         }
 
-        private List<Pacman> GetLastGenerationPacmans()
+        private Pacman[] GetLastGenerationPacmans()
         {
-            var last = new List<Pacman>();
+            var last = new Pacman[] {};
             //todo
             return last;
         }
