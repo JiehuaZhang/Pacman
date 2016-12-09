@@ -10,7 +10,7 @@ namespace OperationManager.StoreDataManager
 {
     public class StoreData : IStoreData
     {
-        public void StoreGameResult(Pacman[] pacmans, Checker checker)
+        public void StoreGameResult(Pacman[] pacmans)
         {
             
         }

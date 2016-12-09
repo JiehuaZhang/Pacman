@@ -26,7 +26,8 @@ namespace PacmanGame.GameManager
             {
                 var p = new Pacman
                 {
-                    Strategy = GenerateStartegy.FillRandomActionToSituation(GenerateSituationArray.GetSituationArray())
+                    Strategy = GenerateStartegy.FillRandomActionToSituation(GenerateSituationArray.GetSituationArray()),
+                    Generation =1
                 };
                 newPacmans[i] =p;
             }

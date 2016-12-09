@@ -8,10 +8,10 @@ namespace CommonType
 {
     public class Pacman
     {
-        public int Points { get; set; }
+        public int[] Points { get; set; }
         public Strategy Strategy { get; set; }
         public int Ranking { get; set; }
         public int Weight { get; set; }
-        public string CheckerID { get; set; }
+        public int Generation { get; set; }
     }
 }

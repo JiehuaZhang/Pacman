@@ -13,12 +13,12 @@ namespace OperationManager.GameManager
 {
     public  class RunTheGame : IRunTheGame
     {
-        public  void GetPoints(ref Pacman[] pacmans, Checker checker)
+        public  void GetPoints(ref Pacman[] pacmans, Checker checker, int index)
         {
             for (var i=0;i<200;i++)
             {
                 var position = FindStartCheck();
-                StartMove(ref pacmans[i], position,checker);
+                StartMove(ref pacmans[i], position,checker, index);
             }
         }
 
@@ -28,7 +28,7 @@ namespace OperationManager.GameManager
             return new CheckPosition {Position = IntHelper.FindPositionFromRandomNumber(rnd.Next(1, 101))};
         }
 
-        private void StartMove(ref Pacman p, CheckPosition startPosition, Checker checker)
+        private void StartMove(ref Pacman p, CheckPosition startPosition, Checker checker, int index)
         {
             var currentPosition = startPosition;
             var allSituation = checker.Checks[currentPosition];
@@ -52,24 +52,24 @@ namespace OperationManager.GameManager
                         var nextCheck = (Situations)allSituation[(int)action];
                         if (nextCheck == Situations.Wall)
                         {
-                            p.Points = p.Points + (int)Points.HitWall;
+                            p.Points[index] = p.Points[index] + (int)Points.HitWall;
                         }
                         else
                         {
                             currentPosition = GetNextPosition(currentPosition, action);
-                            p.Points = p.Points + (int) Points.Move;
+                            p.Points[index] = p.Points[index] + (int) Points.Move;
                         }
                         break;
                     case Actions.Eat:
                         if ((Situations)allSituation[(int)Check.Me] == Situations.Bean)
                         {
                             
-                            p.Points = p.Points + (int)Points.EatBean;
+                            p.Points[index] = p.Points[index] + (int)Points.EatBean;
                             CheckerChange(ref checker, currentPosition);
                         }
                         else
                         {
-                            p.Points = p.Points +(int)Points.EatEmpty;
+                            p.Points[index] = p.Points[index] + (int)Points.EatEmpty;
                         }
                         break;
                 }
@@ -151,6 +151,8 @@ namespace OperationManager.GameManager
                     return new CheckPosition { Position = new[] { line+1, column} };
                 case Actions.Left:
                     return new CheckPosition { Position = new[] { line, column - 1 } };
+                default:
+                    return currentPosition;
             }
         }
 
@@ -168,6 +170,8 @@ namespace OperationManager.GameManager
                     return new CheckPosition { Position = new[] { line + 1, column } };
                 case Check.MyLeft:
                     return new CheckPosition { Position = new[] { line, column - 1 } };
+                default:
+                    return myPosition;
             }
         }
 

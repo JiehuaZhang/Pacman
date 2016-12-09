@@ -40,12 +40,12 @@ namespace OperationManager.CheckerManager
             return checker;
         }
 
-        public List<Checker> Generate1000Checkers()
+        public Checker[] Generate1000Checkers()
         {
-            var checkers = new List<Checker>();
+            var checkers = new Checker[] {};
             for (var i = 0; i < 1000; i++)
             {
-              checkers.Add(  GenerateInitialChecker());
+              checkers[i] =  GenerateInitialChecker();
             }
             return checkers;
         } 
