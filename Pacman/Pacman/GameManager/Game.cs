@@ -23,9 +23,8 @@ namespace PacmanGame.GameManager
             for (var i=0;i<1000;i++)
             {
                 _runTheGame.GetPoints(ref pacmans, checkers[i],  i);
-                _gameResult.GetRankingAndWeight(ref pacmans);
-               
             }
+            _gameResult.GetRankingAndWeight(ref pacmans);
             _storeData.StoreGameResult(pacmans);
         }
     }

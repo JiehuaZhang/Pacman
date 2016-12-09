@@ -13,12 +13,12 @@ namespace OperationManager.GameManager
 {
     public  class RunTheGame : IRunTheGame
     {
-        public  void GetPoints(ref Pacman[] pacmans, Checker checker, int index)
+        public  void GetPoints(ref Pacman[] pacmans, Checker checker, int checkerindex)
         {
             for (var i=0;i<200;i++)
             {
                 var position = FindStartCheck();
-                StartMove(ref pacmans[i], position,checker, index);
+                StartMove(ref pacmans[i], position,checker, checkerindex);
             }
         }
 
@@ -31,9 +31,9 @@ namespace OperationManager.GameManager
         private void StartMove(ref Pacman p, CheckPosition startPosition, Checker checker, int index)
         {
             var currentPosition = startPosition;
-            var allSituation = checker.Checks[currentPosition];
             for (var i = 0; i < 200; i++)
             {
+                var allSituation = checker.Checks[currentPosition];
                 var action = (Actions)p.Strategy.Lines.Where(x => x.Key == string.Join("", currentPosition.Position)).FirstOrDefault().Value;
                 
                 while (action == Actions.Random)
