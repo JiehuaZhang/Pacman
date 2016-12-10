@@ -13,5 +13,6 @@ namespace CommonType
         public int Ranking { get; set; }
         public int Weight { get; set; }
         public int Generation { get; set; }
+        public int AveragePoints { get; set; }
     }
 }
