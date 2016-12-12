@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using CommonType;
+using CommonType.Enum;
 using OperationManager.CheckerManager;
 using OperationManager.StrategyManager;
 
@@ -22,7 +23,7 @@ namespace PacmanGame.GameManager
         private static Pacman[] Get200NewPacman()
         {
             var newPacmans = new Pacman[] {};
-            for (var i = 0; i < 200; i++)
+            for (var i = 0; i < (int)GameRules.NumberOfOneGenerationPacman; i++)
             {
                 var p = new Pacman
                 {

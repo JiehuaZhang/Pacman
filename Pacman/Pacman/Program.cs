@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using CommonType;
 using OperationManager.CheckerManager;
+using OperationManager.DataManager;
 using OperationManager.GameManager;
 using OperationManager.StoreDataManager;
 using PacmanGame.GameManager;
@@ -9,9 +10,10 @@ namespace PacmanGame
 {
     class Program
     {
-        private static readonly Game Game = new Game(new StoreData(), new RunTheGame(), new GameResult());
+        private static readonly Game Game = new Game(new StoreData(new SqLiteConnection()), new RunTheGame(), new GameResult());
         private static readonly GenerateChecker GenerateChecker = new GenerateChecker();
         private static readonly Reproduce Reproduct = new Reproduce();
+        private static readonly SqLiteConnection SQLiteConnection = new SqLiteConnection();
 
 
         static void Main(string[] args)
@@ -30,9 +32,7 @@ namespace PacmanGame
 
         private static bool  IsNewStart()
         {
-            var res = true;
-            //todo
-            return res;
+            return SQLiteConnection.CheckIsNewStart();
         }
     }
 

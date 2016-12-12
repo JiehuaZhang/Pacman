@@ -10,5 +10,7 @@ namespace OperationManager.Interface
     public interface IRunTheGame
     {
         void GetPoints(ref Pacman[] pacmans, Checker checker, int checkerindex);
+        void StartMove(ref Pacman pacman, CheckPosition startPosition, Checker checker, int index);
+        CheckPosition FindStartCheck();
     }
 }

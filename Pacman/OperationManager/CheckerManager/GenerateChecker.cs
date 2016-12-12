@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using CommonType;
+using CommonType.Enum;
 
 namespace OperationManager.CheckerManager
 {
@@ -43,7 +44,7 @@ namespace OperationManager.CheckerManager
         public Checker[] Generate1000Checkers()
         {
             var checkers = new Checker[] {};
-            for (var i = 0; i < 1000; i++)
+            for (var i = 0; i < (int)GameRules.NumberOfOneGenerationChecker; i++)
             {
               checkers[i] =  GenerateInitialChecker();
             }

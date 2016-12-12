@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="CheckerManager\GenerateChecker.cs" />
     <Compile Include="CheckerManager\SprinkleBeans.cs" />
+    <Compile Include="DataManager\SqliteConnection.cs" />
     <Compile Include="GameManager\GameResult.cs" />
     <Compile Include="GameManager\RunTheGame.cs" />
     <Compile Include="Helper\IntHelper.cs" />
@@ -82,9 +83,7 @@
       <Name>CommonType</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataManager\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

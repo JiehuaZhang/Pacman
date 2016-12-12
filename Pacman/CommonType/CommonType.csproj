@@ -42,8 +42,10 @@
   <ItemGroup>
     <Compile Include="Checker.cs" />
     <Compile Include="CheckPosition.cs" />
+    <Compile Include="Const\PacmanConst.cs" />
     <Compile Include="Enum\Actions.cs" />
     <Compile Include="Enum\CheckTypes.cs" />
+    <Compile Include="Enum\GameRules.cs" />
     <Compile Include="Enum\Points.cs" />
     <Compile Include="Enum\Check.cs" />
     <Compile Include="Enum\Situations.cs" />

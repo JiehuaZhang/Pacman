@@ -15,26 +15,26 @@ namespace OperationManager.GameManager
     {
         public  void GetPoints(ref Pacman[] pacmans, Checker checker, int checkerindex)
         {
-            for (var i=0;i<200;i++)
+            for (var i=0;i<pacmans.Length;i++)
             {
                 var position = FindStartCheck();
                 StartMove(ref pacmans[i], position,checker, checkerindex);
             }
         }
 
-        private CheckPosition FindStartCheck()
+        public  CheckPosition FindStartCheck()
         {
             var rnd = new Random();
             return new CheckPosition {Position = IntHelper.FindPositionFromRandomNumber(rnd.Next(1, 101))};
         }
 
-        private void StartMove(ref Pacman p, CheckPosition startPosition, Checker checker, int index)
+        public void StartMove(ref Pacman pacman, CheckPosition startPosition, Checker checker, int index)
         {
             var currentPosition = startPosition;
-            for (var i = 0; i < 200; i++)
+            for (var i = 0; i < (int)GameRules.NumberOfOneGameMove; i++)
             {
                 var allSituation = checker.Checks[currentPosition];
-                var action = (Actions)p.Strategy.Lines.Where(x => x.Key == string.Join("", currentPosition.Position)).FirstOrDefault().Value;
+                var action = (Actions)pacman.Strategy.Lines.Where(x => x.Key == string.Join("", currentPosition.Position)).FirstOrDefault().Value;
                 
                 while (action == Actions.Random)
                 {
@@ -52,24 +52,24 @@ namespace OperationManager.GameManager
                         var nextCheck = (Situations)allSituation[(int)action];
                         if (nextCheck == Situations.Wall)
                         {
-                            p.Points[index] = p.Points[index] + (int)Points.HitWall;
+                            pacman.Points[index] = pacman.Points[index] + (int)Points.HitWall;
                         }
                         else
                         {
                             currentPosition = GetNextPosition(currentPosition, action);
-                            p.Points[index] = p.Points[index] + (int) Points.Move;
+                            pacman.Points[index] = pacman.Points[index] + (int) Points.Move;
                         }
                         break;
                     case Actions.Eat:
                         if ((Situations)allSituation[(int)Check.Me] == Situations.Bean)
                         {
                             
-                            p.Points[index] = p.Points[index] + (int)Points.EatBean;
+                            pacman.Points[index] = pacman.Points[index] + (int)Points.EatBean;
                             CheckerChange(ref checker, currentPosition);
                         }
                         else
                         {
-                            p.Points[index] = p.Points[index] + (int)Points.EatEmpty;
+                            pacman.Points[index] = pacman.Points[index] + (int)Points.EatEmpty;
                         }
                         break;
                 }
