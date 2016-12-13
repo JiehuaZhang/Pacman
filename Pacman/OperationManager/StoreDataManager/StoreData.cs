@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using CommonType;
 using CommonType.Const;
 using OperationManager.DataManager;
+using OperationManager.Helper;
 using OperationManager.Interface;
 
 namespace OperationManager.StoreDataManager
@@ -28,21 +29,11 @@ namespace OperationManager.StoreDataManager
             {
                 var sb = new StringBuilder();
                 sb.Append("(");
-                sb.Append($"'{string.Join(",", pacman.Points)}','{GenerateStrategyString(pacman.Strategy)}', '{pacman.Ranking}','{pacman.Weight}','{pacman.Generation}', '{pacman.AveragePoints}'");
+                sb.Append($"'{string.Join(",", pacman.Points)}','{StringHelper.GenerateStrategyString(pacman.Strategy)}', '{pacman.Ranking}','{pacman.Weight}','{pacman.Generation}', '{pacman.AveragePoints}'");
                 sb.Append(")");
                 insertValue.Add(sb.ToString());
             }
             _sqLiteConnection.InsertConnection(insertValue);
-        }
-
-        private string GenerateStrategyString(Strategy strategy)
-        {
-            var sb = new StringBuilder();
-            foreach (KeyValuePair<string, int> line in strategy.Lines)
-            {
-                sb.Append($"{line.Key}:{line.Value},");
-            }
-            return sb.ToString();
         }
 
     }

@@ -9,7 +9,7 @@ namespace OperationManager.Interface
 {
     public interface IGameResult
     {
-        void GetRankingAndWeight(ref Pacman[] pacmans);
+        Pacman[] GetRankingAndWeight(Pacman[] pacmans);
 
     }
 }

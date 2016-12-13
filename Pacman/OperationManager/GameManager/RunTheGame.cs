@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CommonType;
 using CommonType.Enum;
+using log4net;
 using OperationManager.Helper;
 using OperationManager.Interface;
 
@@ -13,12 +14,14 @@ namespace OperationManager.GameManager
 {
     public  class RunTheGame : IRunTheGame
     {
+        public ILog Log => LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public  void GetPoints(ref Pacman[] pacmans, Checker checker, int checkerindex)
         {
             for (var i=0;i<pacmans.Length;i++)
             {
                 var position = FindStartCheck();
                 StartMove(ref pacmans[i], position,checker, checkerindex);
+                Log.Info(StringHelper.GenerateStrategyString(pacmans[i].Strategy));
             }
         }
 
@@ -74,6 +77,7 @@ namespace OperationManager.GameManager
                         break;
                 }
             }
+            Log.Info(pacman.Points[index]);
         }
 
         private void CheckerChange(ref Checker checker, CheckPosition eatenBeanCheckPosition)

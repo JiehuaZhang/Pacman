@@ -20,21 +20,12 @@ namespace PacmanGame.GameManager
         }
         public void Run(Pacman[] pacmans, Checker[] checkers)
         {
-            //for (var i = 0; i < pacmans.Length; i++)
-            //{
-            //    for (var j=0;j<checkers.Length;j++)
-            //    {
-            //        _runTheGame.StartMove(ref pacmans[i], _runTheGame.FindStartCheck(), checkers[j], j);
-                    
-            //    }
-            //}
-
             for (var i = 0; i < checkers.Length; i++)
             {
                 _runTheGame.GetPoints(ref pacmans, checkers[i], i);
             }
-             _gameResult.GetRankingAndWeight(ref pacmans);
-            _storeData.StoreGameResult(pacmans);
+            var rankingPacmans = _gameResult.GetRankingAndWeight(pacmans);
+            _storeData.StoreGameResult(rankingPacmans);
         }
     }
 }

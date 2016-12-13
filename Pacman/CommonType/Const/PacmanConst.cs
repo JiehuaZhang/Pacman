@@ -12,8 +12,8 @@ namespace CommonType.Const
         public const string SQLTableName = "Pacmans";
         public const string SQLCreatePacmanTalbeQuery = @"CREATE TABLE IF NOT EXISTS [Pacmans] (
                                                           [ID] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-                                                          [Points] NVARCHAR(2048)  NULL,
-                                                          [Strategy] VARCHAR(2048)  NULL,
+                                                          [Points] TEXT  NULL,
+                                                          [Strategy] TEXT  NULL,
                                                           [Ranking] INTEGER NULL,
                                                           [Weight] INTEGER NULL,
                                                           [Generation] INTEGER NULL,

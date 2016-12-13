@@ -8,6 +8,7 @@ namespace CommonType
 {
     public class Pacman
     {
+        public int ID { get; set; }
         public int[] Points { get; set; }
         public Strategy Strategy { get; set; }
         public int Ranking { get; set; }
