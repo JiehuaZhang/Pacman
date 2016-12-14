@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CommonType;
 using OperationManager.GameManager;
 using OperationManager.Interface;
@@ -23,6 +24,7 @@ namespace PacmanGame.GameManager
             for (var i = 0; i < checkers.Length; i++)
             {
                 _runTheGame.GetPoints(ref pacmans, checkers[i], i);
+                Console.WriteLine(i);
             }
             var rankingPacmans = _gameResult.GetRankingAndWeight(pacmans);
             _storeData.StoreGameResult(rankingPacmans);

@@ -73,6 +73,7 @@
     <Compile Include="GameManager\GameResult.cs" />
     <Compile Include="GameManager\RunTheGame.cs" />
     <Compile Include="Helper\IntHelper.cs" />
+    <Compile Include="Helper\RandomHelper.cs" />
     <Compile Include="Helper\StringHelper.cs" />
     <Compile Include="Interface\IGameResult.cs" />
     <Compile Include="Interface\IRunTheGame.cs" />

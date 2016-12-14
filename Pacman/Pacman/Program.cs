@@ -13,7 +13,7 @@ namespace PacmanGame
         private static readonly Game Game = new Game(new StoreData(new SqLiteConnection()), new RunTheGame(), new GameResult());
         private static readonly GenerateChecker GenerateChecker = new GenerateChecker();
         private static readonly Reproduce Reproduct = new Reproduce();
-        private static readonly SqLiteConnection SQLiteConnection = new SqLiteConnection();
+        private static readonly SqLiteConnection SqLiteConnection = new SqLiteConnection();
 
 
         static void Main(string[] args)
@@ -25,14 +25,20 @@ namespace PacmanGame
             }
             else
             {
-                var nextGenerationPacmans =new NextGeneration(Game, GenerateChecker, Reproduct);
+                var nextGenerationPacmans =new NextGeneration(Game, GenerateChecker, Reproduct, SqLiteConnection);
                 nextGenerationPacmans.Play();
             }
         }
 
         private static bool  IsNewStart()
         {
-            return SQLiteConnection.CheckIsNewStart();
+            var ifTalbeExist = SqLiteConnection.IfTableExist();
+            if (ifTalbeExist)
+            {
+                var generation =SqLiteConnection.GetLastGeneration();
+                return generation == 0;
+            }
+            return true;
         }
     }
 

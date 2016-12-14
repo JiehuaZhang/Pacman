@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using CommonType;
 using OperationManager.Interface;
 
@@ -18,8 +12,22 @@ namespace OperationManager.GameManager
             {
                 pacmans[i].AveragePoints = pacmans[i].Points.Sum()/ pacmans[i].Points.Length;
             }
-           return (from pacman in pacmans
-                select pacman).OrderBy(x => x.AveragePoints).ToArray();
+            var newRankingPacman= (from pacman in pacmans
+                                     select pacman).OrderByDescending(x => x.AveragePoints).ToArray();
+            var lastPoints = newRankingPacman[newRankingPacman.Length - 1].AveragePoints;
+            for (var i = 0; i < newRankingPacman.Length; i++)
+            {
+                var weight = newRankingPacman[i].AveragePoints - lastPoints;
+                if (weight == 0)
+                {
+                    newRankingPacman[i].Weight = 1;
+                }
+                else
+                {
+                     newRankingPacman[i].Weight = weight;
+                }
+            }
+            return newRankingPacman;
         }
     }
 }

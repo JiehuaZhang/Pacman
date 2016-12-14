@@ -43,7 +43,7 @@ namespace OperationManager.CheckerManager
 
         public Checker[] Generate1000Checkers()
         {
-            var checkers = new Checker[] {};
+            var checkers = new Checker[(int)GameRules.NumberOfOneGenerationChecker];
             for (var i = 0; i < (int)GameRules.NumberOfOneGenerationChecker; i++)
             {
               checkers[i] =  GenerateInitialChecker();

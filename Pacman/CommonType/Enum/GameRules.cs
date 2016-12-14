@@ -8,8 +8,12 @@ namespace CommonType.Enum
 {
     public enum GameRules
     {
-        NumberOfOneGenerationPacman =200,
+        NumberOfOneGenerationPacman = 200,
         NumberOfOneGameMove = 200,
-        NumberOfOneGenerationChecker = 10000
+        NumberOfOneGenerationChecker = 1000
+
+        //NumberOfOneGenerationPacman = 2,
+        //NumberOfOneGameMove = 200,
+        //NumberOfOneGenerationChecker = 5
     }
 }

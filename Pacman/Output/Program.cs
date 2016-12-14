@@ -49,7 +49,8 @@ namespace Output
 
         private static void OutputStrategyArray()
         {
-            var startegy = GenerateStartegy.FillRandomActionToSituation(GenerateSituationArray.GetSituationArray());
+            var rnd = new Random();
+            var startegy = GenerateStartegy.FillRandomActionToSituation(GenerateSituationArray.GetSituationArray(), rnd);
             foreach (var l in startegy.Lines)
             {
                 Console.WriteLine($"{l.Key}:{l.Value}");

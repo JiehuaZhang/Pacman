@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CommonType;
 using CommonType.Enum;
 using OperationManager.CheckerManager;
@@ -22,13 +23,15 @@ namespace PacmanGame.GameManager
 
         private static Pacman[] Get200NewPacman()
         {
-            var newPacmans = new Pacman[] {};
+            var newPacmans = new Pacman[(int)GameRules.NumberOfOneGenerationPacman];
+            var rnd = new Random();
             for (var i = 0; i < (int)GameRules.NumberOfOneGenerationPacman; i++)
             {
                 var p = new Pacman
                 {
-                    Strategy = GenerateStartegy.FillRandomActionToSituation(GenerateSituationArray.GetSituationArray()),
-                    Generation =1
+                    Strategy = GenerateStartegy.FillRandomActionToSituation(GenerateSituationArray.GetSituationArray(), rnd),
+                    Generation =1,
+                    Points = new int[(int)GameRules.NumberOfOneGenerationChecker]
                 };
                 newPacmans[i] =p;
             }

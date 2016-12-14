@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using CommonType;
 using OperationManager.CheckerManager;
+using OperationManager.DataManager;
 
 namespace PacmanGame.GameManager
 {
@@ -9,11 +10,13 @@ namespace PacmanGame.GameManager
         private readonly Game _game;
         private readonly GenerateChecker _generateChecker;
         private readonly Reproduce _reproduce;
-        public NextGeneration(Game game, GenerateChecker generateChecker, Reproduce reproduce)
+        private readonly SqLiteConnection _sqLiteConnection;
+        public NextGeneration(Game game, GenerateChecker generateChecker, Reproduce reproduce, SqLiteConnection sqLiteConnection)
         {
             _game = game;
             _generateChecker = generateChecker;
             _reproduce = reproduce;
+            _sqLiteConnection = sqLiteConnection;
         }
 
         public void Play()
@@ -23,8 +26,8 @@ namespace PacmanGame.GameManager
 
         private Pacman[] GetLastGenerationPacmans()
         {
-            var last = new Pacman[] {};
-            //todo
+            var lastGeneration = _sqLiteConnection.GetLastGeneration();
+            var last = _sqLiteConnection.GetOneGenerationPacmans(lastGeneration).ToArray();
             return last;
         }
 
