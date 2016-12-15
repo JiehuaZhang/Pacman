@@ -38,10 +38,10 @@ namespace OperationManager.GameManager
             {
                 var allSituation = checker.Checks[currentPosition];
                 var action = (Actions)pacman.Strategy.Lines.Where(x => x.Key == string.Join("", allSituation)).FirstOrDefault().Value;
-                
+                var rnd = new Random();
                 while (action == Actions.Random)
                 {
-                    action =(Actions)IntHelper.GetRandomAction();
+                    action =(Actions)rnd.Next(7);
                 }
 
                 switch (action)

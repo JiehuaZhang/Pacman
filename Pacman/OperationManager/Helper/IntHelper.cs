@@ -48,10 +48,19 @@ namespace OperationManager.Helper
             return arr;
         }
 
-        public static int GetRandomAction()
+        public static T[] SubArray<T>(this T[] data, int index, int length)
         {
-            var rnd = new Random();
-            return rnd.Next(7);
+            T[] result = new T[length];
+            Array.Copy(data, index, result, 0, length);
+            return result;
+        }
+
+        public static T[] MergeArray<T>( T[] source1, T[] source2)
+        {
+            var result = new T[source1.Length + source2.Length];
+            Array.Copy(source1,result,source1.Length);
+            Array.Copy(source2, 0,result,source1.Length,source2.Length);
+            return result;
         }
     }
 }

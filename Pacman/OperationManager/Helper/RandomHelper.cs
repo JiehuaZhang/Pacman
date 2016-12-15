@@ -10,10 +10,10 @@ namespace OperationManager.Helper
     {
         public static int GetRandomNumber(double[] list)
         {
-            var proportionList = new ProportionValue<int>[] {};
+            var proportionList = new ProportionValue<int>[list.Length];
             for (var i = 0; i < list.Length; i++)
             {
-                ProportionValue.Create(list[i], i);
+               proportionList[i] = ProportionValue.Create(list[i], i);
             }
 
             return proportionList.ChooseByRandom();
