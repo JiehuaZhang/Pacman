@@ -14,7 +14,8 @@ namespace PacmanGame
         private static readonly GenerateChecker GenerateChecker = new GenerateChecker();
         private static readonly Reproduce Reproduct = new Reproduce();
         private static readonly SqLiteConnection SqLiteConnection = new SqLiteConnection();
-
+        private static readonly log4net.ILog log =
+      log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         static void Main(string[] args)
         {
