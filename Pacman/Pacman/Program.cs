@@ -5,6 +5,7 @@ using OperationManager.DataManager;
 using OperationManager.GameManager;
 using OperationManager.StoreDataManager;
 using PacmanGame.GameManager;
+using PacmanGame.ReportManager;
 
 namespace PacmanGame
 {
@@ -14,9 +15,7 @@ namespace PacmanGame
         private static readonly GenerateChecker GenerateChecker = new GenerateChecker();
         private static readonly Reproduce Reproduct = new Reproduce();
         private static readonly SqLiteConnection SqLiteConnection = new SqLiteConnection();
-        private static readonly log4net.ILog log =
-      log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
+        private static int _pacmanLastGeneration; 
         static void Main(string[] args)
         {
             if (IsNewStart())
@@ -26,6 +25,7 @@ namespace PacmanGame
             }
             else
             {
+                DoReport();
                 var nextGenerationPacmans =new NextGeneration(Game, GenerateChecker, Reproduct, SqLiteConnection);
                 nextGenerationPacmans.Play();
             }
@@ -36,10 +36,21 @@ namespace PacmanGame
             var ifTalbeExist = SqLiteConnection.IfTableExist();
             if (ifTalbeExist)
             {
-                var generation =SqLiteConnection.GetLastGeneration();
-                return generation == 0;
+                _pacmanLastGeneration = SqLiteConnection.GetLastGeneration();
+                return _pacmanLastGeneration == 0;
             }
             return true;
+        }
+
+        private static void DoReport()
+        {
+            SqLiteConnection.CheckIfNeedToCreateReportTable();
+            var reportLastGeneration = 0;
+            if (SqLiteConnection.CheckIfNeedToDoReport(_pacmanLastGeneration,ref reportLastGeneration))
+            {
+                var reportGenerate = new ReportGenerate();
+                reportGenerate.GetReport(_pacmanLastGeneration,reportLastGeneration);
+            }
         }
     }
 

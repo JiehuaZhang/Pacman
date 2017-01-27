@@ -14,5 +14,6 @@ namespace CommonType
         public int Weight { get; set; }
         public int Generation { get; set; }
         public int AveragePoints { get; set; }
+        public string PointsString { get; set; }
     }
 }

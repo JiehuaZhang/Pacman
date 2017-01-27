@@ -22,5 +22,19 @@ namespace CommonType.Const
         public const string SQLInsertPacman = @"INSERT INTO Pacmans (Points,Strategy,Weight,Generation, AveragePoints) Values ";
         public const string SQLGetLastGenerationQuery = @"SELECT Max(Generation) AS LastGeneration FROM pacmans ";
         public const string SQLGetOneGenerationPacmansQuery = @"Select * from pacmans where generation = ";
+        public const string SQLCreateReportQuery = @"CREATE TABLE IF NOT EXISTS  Report(
+                                                          ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                                                          Generation INTEGER   NULL,
+                                                          MaxAveragePoints INTEGER  NULL,
+                                                          MinAveragePoints INTEGER  NULL,
+                                                          MaxPointsOfFirst INTEGER  NULL,
+                                                          CountPositivePointsOfFirst INTEGER  NULL,
+                                                          MaxPoints NVARCHAR(100) NULL,
+                                                          MaxCountPositivePoints NVARCHAR(100) NULL)";
+        public const string SQLInsertReport = @"INSERT INTO Report(Generation,MaxAveragePoints,
+                                                                        MinAveragePoints,MaxPointsOfFirst,
+                                                                        CountPositivePointsOfFirst,MaxPoints,MaxCountPositivePoints) Values ";
+        public const string SQLGetLastGenerationOfReportQuery = @"SELECT Max(Generation) AS LastGeneration FROM Report ";
+        public const string SQLReportTableName = "Report";
     }
 }

@@ -50,6 +50,7 @@
     <Compile Include="Enum\Check.cs" />
     <Compile Include="Enum\Situations.cs" />
     <Compile Include="Pacman.cs" />
+    <Compile Include="Report.cs" />
     <Compile Include="Strategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
