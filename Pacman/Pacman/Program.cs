@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CommonType;
 using OperationManager.CheckerManager;
 using OperationManager.DataManager;
@@ -26,8 +27,14 @@ namespace PacmanGame
             else
             {
                 DoReport();
-                var nextGenerationPacmans =new NextGeneration(Game, GenerateChecker, Reproduct, SqLiteConnection);
-                nextGenerationPacmans.Play();
+                Console.WriteLine("Give a number:");
+                var number = Convert.ToInt32(Console.ReadLine());
+                for (var i = 0; i < number; i++)
+                {
+                    var nextGenerationPacmans =new NextGeneration(Game, GenerateChecker, Reproduct, SqLiteConnection);
+                    nextGenerationPacmans.Play();
+                }
+              
             }
         }
 

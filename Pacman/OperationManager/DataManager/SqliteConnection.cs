@@ -197,5 +197,27 @@ namespace OperationManager.DataManager
             }
             return pacmanList;
         }
+
+        public string GetOneStrategy()
+        {
+            var strategy = string.Empty;
+            using (var con = new SQLiteConnection("data source=" + PacmanConst.SQLDatabaseName))
+            {
+                using (var com = new SQLiteCommand(con))
+                {
+                    con.Open();
+                    com.CommandText = "SELECT  Strategy FROM pacmans WHERE ID= 2695";
+                    using (SQLiteDataReader reader = com.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            strategy = reader["Strategy"].ToString();
+                        }
+                    }
+                    con.Close();
+                }
+            }
+            return strategy;
+        }
     }
 }
