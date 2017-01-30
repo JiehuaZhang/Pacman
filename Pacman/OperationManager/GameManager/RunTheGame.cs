@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using CommonType;
 using CommonType.Enum;
-using log4net;
 using OperationManager.Helper;
 using OperationManager.Interface;
 
