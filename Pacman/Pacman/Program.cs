@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using CommonType;
 using OperationManager.CheckerManager;
 using OperationManager.DataManager;
 using OperationManager.GameManager;

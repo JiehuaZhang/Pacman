@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CommonType;
 using CommonType.Const;
 using OperationManager.Helper;
@@ -15,7 +12,7 @@ namespace OperationManager.DataManager
     {
         public bool IfTableExist()
         {
-            var res = true;
+            bool res;
             if (File.Exists(PacmanConst.SQLDatabaseName))
             {
                 using (var con = new SQLiteConnection("data source=" + PacmanConst.SQLDatabaseName))
