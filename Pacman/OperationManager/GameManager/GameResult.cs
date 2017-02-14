@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using CommonType;
 using OperationManager.Interface;
 
@@ -17,7 +18,7 @@ namespace OperationManager.GameManager
             var lastPoints = newRankingPacman[newRankingPacman.Length - 1].Points.Sum();
             for (var i = 0; i < newRankingPacman.Length; i++)
             {
-                var weight = newRankingPacman[i].Points.Sum() - lastPoints;
+                var weight = (int)Math.Ceiling((double)((newRankingPacman[i].Points.Sum() - lastPoints)/1000));
                 if (weight == 0)
                 {
                     newRankingPacman[i].Weight = 1;
