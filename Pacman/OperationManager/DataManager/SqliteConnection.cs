@@ -181,11 +181,16 @@ namespace OperationManager.DataManager
                         while (reader.Read())
                         {
                             var pacman = new Pacman();
+                            pacman.ID = Convert.ToInt32(reader["ID"]);
                             pacman.Strategy = StringHelper.ConvertStringToStarategy(reader["Strategy"].ToString());
                             pacman.Weight = Convert.ToInt32(reader["Weight"]);
                             pacman.Generation = Convert.ToInt32(reader["Generation"]);
                             pacman.PointsString = reader["Points"].ToString();
                             pacman.AveragePoints = Convert.ToInt32(reader["AveragePoints"]);
+                            if(reader["MaxPoints"]!=DBNull.Value)
+                            pacman.MaxPoints = Convert.ToInt32(reader["MaxPoints"]);
+                            if(reader["PositivePointsCount"]!= DBNull.Value)
+                            pacman.PositivePointsCount = Convert.ToInt32(reader["PositivePointsCount"]);
                             pacmanList.Add(pacman);
                         }
                     }
@@ -215,6 +220,35 @@ namespace OperationManager.DataManager
                 }
             }
             return strategy;
+        }
+
+        public void UpdatePacmansMaxPoints(Pacman p)
+        {
+            using (var con = new SQLiteConnection("data source=" + PacmanConst.SQLDatabaseName))
+            {
+                using (var com = new SQLiteCommand(con))
+                {
+                    con.Open();
+                    com.CommandText = "Update Pacmans Set MaxPoints =" + p.MaxPoints + "," + "PositivePointsCount =" +
+                                      p.PositivePointsCount +" Where ID="+p.ID;
+                    com.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+        }
+
+        public void UpdateWeight(Pacman p)
+        {
+            using (var con = new SQLiteConnection("data source=" + PacmanConst.SQLDatabaseName))
+            {
+                using (var com = new SQLiteCommand(con))
+                {
+                    con.Open();
+                    com.CommandText = "Update Pacmans Set Weight =" + p.Weight + " Where ID=" + p.ID;
+                    com.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
         }
     }
 }

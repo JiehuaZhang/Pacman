@@ -29,7 +29,7 @@ namespace OperationManager.StoreDataManager
             {
                 var sb = new StringBuilder();
                 sb.Append("(");
-                sb.Append($"'{string.Join(",", pacman.Points)}','{StringHelper.GenerateStrategyString(pacman.Strategy)}', '{pacman.Weight}','{pacman.Generation}', '{pacman.AveragePoints}'");
+                sb.Append($"'{string.Join(",", pacman.Points)}','{StringHelper.GenerateStrategyString(pacman.Strategy)}', '{pacman.Weight}','{pacman.Generation}', '{pacman.AveragePoints}','{pacman.MaxPoints}', '{pacman.PositivePointsCount}'");
                 sb.Append(")");
                 insertValue.Add(sb.ToString());
             }

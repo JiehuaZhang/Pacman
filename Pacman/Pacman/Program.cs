@@ -3,6 +3,7 @@ using OperationManager.CheckerManager;
 using OperationManager.DataManager;
 using OperationManager.GameManager;
 using OperationManager.StoreDataManager;
+using OperationManager.Update;
 using PacmanGame.GameManager;
 using PacmanGame.ReportManager;
 
@@ -17,6 +18,9 @@ namespace PacmanGame
         private static int _pacmanLastGeneration; 
         static void Main(string[] args)
         {
+            var update = new UpgradeFromOldDatabase();
+            update.UpdatePacmanWeight(329);
+
             if (IsNewStart())
             {
                 var firstGeneration = new TheFirstGeneration(Game, GenerateChecker);

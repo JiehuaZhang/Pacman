@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CommonType;
 using OperationManager.DataManager;
+using OperationManager.Helper;
 
 namespace PacmanGame.ReportManager
 {
@@ -26,14 +27,14 @@ namespace PacmanGame.ReportManager
                     MinAveragePoints = oneGenerationPacman.OrderBy(x=>x.AveragePoints).First().AveragePoints
                 };
                 var theFirst = oneGenerationPacman.OrderByDescending(x => x.AveragePoints).First();
-                var theFirstPoints = GetPointsArr(theFirst.PointsString);
+                var theFirstPoints = IntHelper.GetPointsArr(theFirst.PointsString);
                 report.MaxAveragePoints = theFirst.AveragePoints;
                 report.MaxPointsOfFirst = theFirstPoints.OrderByDescending(x=>x).First();
                 report.CountPositivePointsOfFirst = theFirstPoints.Where(x => x > 0).Count();
 
                 foreach (var pacman in oneGenerationPacman)
                 {
-                    var pointsArr = GetPointsArr(pacman.PointsString);
+                    var pointsArr = IntHelper.GetPointsArr(pacman.PointsString);
                     var maxPoints = pointsArr.OrderByDescending(x => x).First();
                     var countPositivePoints = pointsArr.Where(x => x > 0).Count();
 
@@ -54,16 +55,6 @@ namespace PacmanGame.ReportManager
             _sqLiteConnection.InsertReport(reports);
         }
 
-        private int[] GetPointsArr(string pointsString)
-        {
-            var strArr = pointsString.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-            var intArr = new int[strArr.Length];
-            for (var i = 0; i < strArr.Length; i++)
-            {
-                var n = Convert.ToInt32(strArr[i]);
-                intArr[i] = n;
-            }
-            return intArr;
-        }
+        
     }
 }

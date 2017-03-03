@@ -62,5 +62,17 @@ namespace OperationManager.Helper
             Array.Copy(source2, 0,result,source1.Length,source2.Length);
             return result;
         }
+
+        public static int[] GetPointsArr(string pointsString)
+        {
+            var strArr = pointsString.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            var intArr = new int[strArr.Length];
+            for (var i = 0; i < strArr.Length; i++)
+            {
+                var n = Convert.ToInt32(strArr[i]);
+                intArr[i] = n;
+            }
+            return intArr;
+        }
     }
 }

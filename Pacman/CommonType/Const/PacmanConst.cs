@@ -17,9 +17,11 @@ namespace CommonType.Const
                                                           Strategy TEXT  NULL,
                                                           Weight INTEGER  NULL,
                                                           Generation INTEGER  NULL,
-                                                          AveragePoints INTEGER  NULL)";
+                                                          AveragePoints INTEGER  NULL,
+                                                          MaxPoints INTEGER NULL,
+                                                          PositivePointsCount INTEGER NULL)";
 
-        public const string SQLInsertPacman = @"INSERT INTO Pacmans (Points,Strategy,Weight,Generation, AveragePoints) Values ";
+        public const string SQLInsertPacman = @"INSERT INTO Pacmans (Points,Strategy,Weight,Generation, AveragePoints,MaxPoints,PositivePointsCount ) Values ";
         public const string SQLGetLastGenerationQuery = @"SELECT Max(Generation) AS LastGeneration FROM pacmans ";
         public const string SQLGetOneGenerationPacmansQuery = @"Select * from pacmans where generation = ";
         public const string SQLCreateReportQuery = @"CREATE TABLE IF NOT EXISTS  Report(

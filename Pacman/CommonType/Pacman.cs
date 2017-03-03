@@ -15,5 +15,7 @@ namespace CommonType
         public int Generation { get; set; }
         public int AveragePoints { get; set; }
         public string PointsString { get; set; }
+        public int PositivePointsCount { get; set; }
+        public int MaxPoints { get; set; }
     }
 }
