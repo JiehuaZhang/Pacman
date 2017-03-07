@@ -17,7 +17,7 @@ namespace OperationManager.Update
             foreach (var pacman in oneGenerationPacman)
             {
                 var pointsArr = IntHelper.GetPointsArr(pacman.PointsString);
-                pacman.MaxPoints= pointsArr.OrderByDescending(x => x).First();
+               // pacman.MaxPoints= pointsArr.OrderByDescending(x => x).First();
                 pacman.PositivePointsCount = pointsArr.Where(x => x > 0).Count();
                 _sqLiteConnection.UpdatePacmansMaxPoints(pacman);
             }
@@ -26,18 +26,12 @@ namespace OperationManager.Update
         public void UpdatePacmanWeight(int generation)
         {
             var oneGenerationPacman = _sqLiteConnection.GetOneGenerationPacmans(generation);
-            foreach (var pacman in oneGenerationPacman)
+            foreach (var p in oneGenerationPacman)
             {
-               var weight = pacman.AveragePoints + pacman.MaxPoints + pacman.PositivePointsCount;
-                if (weight <= 0)
-                {
-                    pacman.Weight = 1;
-                }
-                else
-                {
-                    pacman.Weight = weight;
-                }
-                _sqLiteConnection.UpdateWeight(pacman);
+                p.Points = IntHelper.GetPointsArr(p.PointsString);
+               var weight = p.Points.Sum() > 1000 ? p.Points.Sum() + p.AveragePoints + p.MaxPoints + p.PositivePointsCount : p.AveragePoints + p.MaxPoints + p.PositivePointsCount;
+                p.Weight = weight <= 0 ? 1 : weight;
+                _sqLiteConnection.UpdateWeight(p);
             }
         }
     }

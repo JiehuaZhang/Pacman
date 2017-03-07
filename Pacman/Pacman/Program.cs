@@ -19,7 +19,8 @@ namespace PacmanGame
         static void Main(string[] args)
         {
             var update = new UpgradeFromOldDatabase();
-            update.UpdatePacmanWeight(329);
+            //update.UpdatePacman(2);
+            update.UpdatePacmanWeight(8);
 
             if (IsNewStart())
             {
