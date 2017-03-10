@@ -20,7 +20,7 @@ namespace PacmanGame
         {
             var update = new UpgradeFromOldDatabase();
             //update.UpdatePacman(2);
-            update.UpdatePacmanWeight(8);
+           // update.UpdatePacmanWeight(8);
 
             if (IsNewStart())
             {
@@ -34,6 +34,7 @@ namespace PacmanGame
                 var number = Convert.ToInt32(Console.ReadLine());
                 for (var i = 0; i < number; i++)
                 {
+                    Console.WriteLine("\n{0}", i+1);
                     var nextGenerationPacmans =new NextGeneration(Game, GenerateChecker, Reproduct, SqLiteConnection);
                     nextGenerationPacmans.Play();
                 }
