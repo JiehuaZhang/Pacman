@@ -32,5 +32,15 @@ namespace WebService.Controllers
         {
             return _pacmanProvider.GetOneStrategy();
         }
+
+        [Route("api/pacmangame/Test")]
+        [HttpGet]
+        public string Test()
+        {
+            SautinSoft.UseOffice u = new SautinSoft.UseOffice();
+            var res = u.InitOffice();
+           return res.ToString();
+
+        }
     }
 }
