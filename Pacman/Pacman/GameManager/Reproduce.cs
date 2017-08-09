@@ -41,6 +41,12 @@ namespace PacmanGame.GameManager
                 var cutIndex = cutRnd.Next(243);
                 var motherStrategy = lastGenerationPacmans[motherIndex].Strategy;
                 var fatherStrategy = lastGenerationPacmans[fatherIndex].Strategy;
+
+                Console.WriteLine(new string('*',20));
+                Console.WriteLine("Pacman parents " + i);
+                Console.WriteLine("Mother:" + lastGenerationPacmans[motherIndex].Weight);
+                Console.WriteLine("Father:" + lastGenerationPacmans[fatherIndex].Weight);
+
                 var strategies = GenerateNewGenerationStrategy(motherStrategy, fatherStrategy, cutIndex);
                 newGenearationPacman[i*2] = new Pacman
                 {
