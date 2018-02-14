@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SQLite;
 using System.IO;
 using CommonType;
@@ -8,14 +9,15 @@ using OperationManager.Helper;
 
 namespace OperationManager.DataManager
 {
-    public class SqLiteConnection
+    public class SqLiteConnection : ISqLiteConnection
     {
+        private readonly string SQLDatabaseName = ConfigurationManager.AppSettings["DatabaseName"];
         public bool IfTableExist()
         {
             bool res;
-            if (File.Exists(PacmanConst.SQLDatabaseName))
+            if (File.Exists(SQLDatabaseName))
             {
-                using (var con = new SQLiteConnection("data source=" + PacmanConst.SQLDatabaseName))
+                using (var con = new SQLiteConnection("data source=" + SQLDatabaseName))
                 {
                     using (SQLiteCommand com = new SQLiteCommand(con))
                     {
@@ -45,8 +47,8 @@ namespace OperationManager.DataManager
             else
             {
                 res = false;
-                SQLiteConnection.CreateFile(PacmanConst.SQLDatabaseName);
-                using (var con = new SQLiteConnection("data source=" + PacmanConst.SQLDatabaseName))
+                SQLiteConnection.CreateFile(SQLDatabaseName);
+                using (var con = new SQLiteConnection("data source=" + SQLDatabaseName))
                 {
                     using (var com = new SQLiteCommand(con))
                     {
@@ -63,9 +65,9 @@ namespace OperationManager.DataManager
         public void CheckIfNeedToCreateReportTable()
         {
             var result = true;
-            using (var con = new SQLiteConnection("data source=" + PacmanConst.SQLDatabaseName))
+            using (var con = new SQLiteConnection("data source=" + SQLDatabaseName))
             {
-                using (SQLiteCommand com = new SQLiteCommand(con))
+                using (var com = new SQLiteCommand(con))
                 {
 
                     con.Open();
@@ -90,13 +92,13 @@ namespace OperationManager.DataManager
 
         public bool CheckIfNeedToDoReport(int pacmanLastGeneration, ref int reportGeneration)
         {
-            using (var con = new SQLiteConnection("data source=" + PacmanConst.SQLDatabaseName))
+            using (var con = new SQLiteConnection("data source=" + SQLDatabaseName))
             {
-                using (SQLiteCommand com = new SQLiteCommand(con))
+                using (var com = new SQLiteCommand(con))
                 {
                     con.Open();
                     com.CommandText = PacmanConst.SQLGetLastGenerationOfReportQuery;
-                    using (SQLiteDataReader reader = com.ExecuteReader())
+                    using (var reader = com.ExecuteReader())
                     {
                         if (reader.Read() && reader["LastGeneration"]!=DBNull.Value)
                         {
@@ -113,7 +115,7 @@ namespace OperationManager.DataManager
         public void InsertConnection(List<string> insertValueQuery)
         {
 
-            using (var con = new SQLiteConnection("data source=" + PacmanConst.SQLDatabaseName))
+            using (var con = new SQLiteConnection("data source=" + SQLDatabaseName))
             {
                 using (var com = new SQLiteCommand(con))
                 {
@@ -130,7 +132,7 @@ namespace OperationManager.DataManager
 
         public void InsertReport(List<Report> reports)
         {
-            using (var con = new SQLiteConnection("data source=" + PacmanConst.SQLDatabaseName))
+            using (var con = new SQLiteConnection("data source=" + SQLDatabaseName))
             {
                 using (var com = new SQLiteCommand(con))
                 {
@@ -148,7 +150,7 @@ namespace OperationManager.DataManager
         public int GetLastGeneration()
         {
             var generation = 0;
-            using (var con = new SQLiteConnection("data source=" + PacmanConst.SQLDatabaseName))
+            using (var con = new SQLiteConnection("data source=" + SQLDatabaseName))
             {
                 using (var com = new SQLiteCommand(con))
                 {
@@ -170,7 +172,7 @@ namespace OperationManager.DataManager
         public List<Pacman> GetOneGenerationPacmans(int generation)
         {
             var pacmanList = new List<Pacman>();
-            using (var con = new SQLiteConnection("data source=" + PacmanConst.SQLDatabaseName))
+            using (var con = new SQLiteConnection("data source=" + SQLDatabaseName))
             {
                 using (var com = new SQLiteCommand(con))
                 {
@@ -203,7 +205,7 @@ namespace OperationManager.DataManager
         public string GetOneStrategy()
         {
             var strategy = string.Empty;
-            using (var con = new SQLiteConnection("data source=" + PacmanConst.SQLDatabaseName))
+            using (var con = new SQLiteConnection("data source=" + SQLDatabaseName))
             {
                 using (var com = new SQLiteCommand(con))
                 {
@@ -224,7 +226,7 @@ namespace OperationManager.DataManager
 
         public void UpdatePacmansMaxPoints(Pacman p)
         {
-            using (var con = new SQLiteConnection("data source=" + PacmanConst.SQLDatabaseName))
+            using (var con = new SQLiteConnection("data source=" + SQLDatabaseName))
             {
                 using (var com = new SQLiteCommand(con))
                 {
@@ -239,7 +241,7 @@ namespace OperationManager.DataManager
 
         public void UpdateWeight(Pacman p)
         {
-            using (var con = new SQLiteConnection("data source=" + PacmanConst.SQLDatabaseName))
+            using (var con = new SQLiteConnection("data source=" + SQLDatabaseName))
             {
                 using (var com = new SQLiteCommand(con))
                 {

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using CommonType;
 using CommonType.Enum;
 using OperationManager.Helper;
 
 namespace PacmanGame.GameManager
 {
-    public  class Reproduce
+    public  class Reproduce : IReproduce
     {
 
         public Pacman[] GetNextGenerationPacmans(Pacman[] lastGenerationPacmans)
@@ -50,13 +51,13 @@ namespace PacmanGame.GameManager
                 var strategies = GenerateNewGenerationStrategy(motherStrategy, fatherStrategy, cutIndex);
                 newGenearationPacman[i*2] = new Pacman
                 {
-                    Strategy = RandomChangeAction(strategies[0], changeRnd.Next(243), actionRnd.Next(7)),
+                    Strategy = RandomChangeActions(strategies[0],1),
                     Generation = thisGeneration,
                     Points = new int[(int)GameRules.NumberOfOneGenerationChecker]
                 };
                 newGenearationPacman[i*2+1] = new Pacman
                 {
-                    Strategy = RandomChangeAction(strategies[1], changeRnd.Next(243), actionRnd.Next(7)),
+                    Strategy = RandomChangeActions(strategies[1],1),
                     Generation = thisGeneration,
                     Points = new int[(int)GameRules.NumberOfOneGenerationChecker]
                 };
@@ -98,7 +99,34 @@ namespace PacmanGame.GameManager
             };
         }
 
-    
+        public Strategy RandomChangeActions(Strategy originalStrategy, int number)
+        {
+            var lastChangeIndex = -1;
+            var actionRnd = new Random();
+            var changeRnd = new Random();
+            for (var i = 0; i < number; i++)
+            {
+                
+                var randomAction = actionRnd.Next(7);
+                var index = changeRnd.Next(243);
+                while (index == lastChangeIndex)
+                {
+                    index = changeRnd.Next(243);
+                }
+                lastChangeIndex = index;
+                while (randomAction == originalStrategy.Lines[index].Value)
+                {
+                    randomAction = actionRnd.Next(7);
+                }
+                originalStrategy.Lines[index] = new KeyValuePair<string, int>(originalStrategy.Lines[index].Key, randomAction);
+            }
+            return new Strategy
+            {
+                Lines = originalStrategy.Lines,
+            };
+        }
+
+
     }
 
     

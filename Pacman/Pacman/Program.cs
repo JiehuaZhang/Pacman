@@ -1,4 +1,5 @@
 ﻿using System;
+using Castle.Windsor;
 using OperationManager.CheckerManager;
 using OperationManager.DataManager;
 using OperationManager.GameManager;
@@ -10,59 +11,39 @@ using PacmanGame.ReportManager;
 namespace PacmanGame
 {
     class Program
-    {
-        private static readonly Game Game = new Game(new StoreData(new SqLiteConnection()), new RunTheGame(), new GameResult());
-        private static readonly GenerateChecker GenerateChecker = new GenerateChecker();
-        private static readonly Reproduce Reproduct = new Reproduce();
-        private static readonly SqLiteConnection SqLiteConnection = new SqLiteConnection();
-        private static int _pacmanLastGeneration; 
+    { 
         static void Main(string[] args)
         {
-            var update = new UpgradeFromOldDatabase();
-            //update.UpdatePacman(2);
-           // update.UpdatePacmanWeight(8);
 
-            if (IsNewStart())
+            var container = WindsorSetting.RegisterContainer();
+
+            //var update = container.Resolve<UpgradeFromOldDatabase>();
+            //update.UpdatePacman(2);
+            // update.UpdatePacmanWeight(8);
+
+            IGeneration needToRunGeneration;
+            var beforeGameStart = container.Resolve<IBeforeGameStartRun>();
+            if (beforeGameStart.IsNewStart())
             {
-                var firstGeneration = new TheFirstGeneration(Game, GenerateChecker);
-                firstGeneration.Play();
+                needToRunGeneration = container.Resolve<IGeneration>("First");
+                needToRunGeneration.Play();
             }
             else
             {
-                DoReport();
+                beforeGameStart.DoReport();
                 Console.WriteLine("Give a number:");
                 var number = Convert.ToInt32(Console.ReadLine());
                 for (var i = 0; i < number; i++)
                 {
                     Console.WriteLine("\n{0}", i+1);
-                    var nextGenerationPacmans =new NextGeneration(Game, GenerateChecker, Reproduct, SqLiteConnection);
-                    nextGenerationPacmans.Play();
+                    needToRunGeneration = container.Resolve<IGeneration>("Next");
+                    needToRunGeneration.Play();
                 }
               
             }
         }
 
-        private static bool  IsNewStart()
-        {
-            var ifTalbeExist = SqLiteConnection.IfTableExist();
-            if (ifTalbeExist)
-            {
-                _pacmanLastGeneration = SqLiteConnection.GetLastGeneration();
-                return _pacmanLastGeneration == 0;
-            }
-            return true;
-        }
 
-        private static void DoReport()
-        {
-            SqLiteConnection.CheckIfNeedToCreateReportTable();
-            var reportLastGeneration = 0;
-            if (SqLiteConnection.CheckIfNeedToDoReport(_pacmanLastGeneration,ref reportLastGeneration))
-            {
-                var reportGenerate = new ReportGenerate();
-                reportGenerate.GetReport(_pacmanLastGeneration,reportLastGeneration);
-            }
-        }
     }
 
 }

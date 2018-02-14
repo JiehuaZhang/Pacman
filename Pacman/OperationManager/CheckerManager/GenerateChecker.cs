@@ -5,7 +5,7 @@ using CommonType.Enum;
 
 namespace OperationManager.CheckerManager
 {
-    public  class GenerateChecker
+    public  class GenerateChecker : IGenerateChecker
     {
         public  Checker GenerateEmptyChecker()
         {
@@ -55,7 +55,15 @@ namespace OperationManager.CheckerManager
         {
             var checker = GenerateEmptyChecker();
             var beanPosition = SprinkleBeans.GetRandomSprinkleBeansPosition();
-            foreach (var position in checker.Checks.Keys.Where(position => beanPosition.Any(x => x.SequenceEqual(position.Position))))
+            MakeChangeAfterBeans(checker, beanPosition);
+            return checker;
+
+        }
+
+        public void MakeChangeAfterBeans(Checker checker, List<int[]> beanPosition)
+        {
+            foreach (var position in checker.Checks.Keys.Where(position =>
+                beanPosition.Any(x => x.SequenceEqual(position.Position))))
             {
                 checker.Checks[position][4] = 1;
             }
@@ -114,8 +122,6 @@ namespace OperationManager.CheckerManager
                     checker.Checks[key][3] = CheckOtherSituation(3, key.Position, checker);
                 }
             }
-            return checker;
-
         }
 
         private static int CheckOtherSituation(int relativePosition, int[] position, Checker checker)

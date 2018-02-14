@@ -34,7 +34,7 @@ namespace OperationManager.GameManager
             for (var i = 0; i < (int)GameRules.NumberOfOneGameMove; i++)
             {
                 var allSituation = checker.Checks[currentPosition];
-                var action = (Actions)pacman.Strategy.Lines.Where(x => x.Key == string.Join("", allSituation)).FirstOrDefault().Value;
+                var action = (Actions)pacman.Strategy.Lines.FirstOrDefault(x => x.Key == string.Join("", allSituation)).Value;
                 var rnd = new Random();
                 while (action == Actions.Random)
                 {

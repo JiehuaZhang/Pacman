@@ -8,7 +8,7 @@ using OperationManager.StoreDataManager;
 
 namespace PacmanGame.GameManager
 {
-    public class Game
+    public class Game : IGame
     {
         private readonly IStoreData _storeData;
         private readonly IRunTheGame _runTheGame;

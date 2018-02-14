@@ -8,9 +8,15 @@ using OperationManager.Helper;
 
 namespace OperationManager.Update
 {
-    public class UpgradeFromOldDatabase
+    public class UpgradeFromOldDatabase : IUpgradeFromOldDatabase
     {
-        private readonly SqLiteConnection _sqLiteConnection = new SqLiteConnection();
+        private readonly ISqLiteConnection _sqLiteConnection;
+
+        public UpgradeFromOldDatabase(ISqLiteConnection sqLiteConnection)
+        {
+            _sqLiteConnection = sqLiteConnection;
+        }
+
         public void UpdatePacman(int generation)
         {
             var oneGenerationPacman = _sqLiteConnection.GetOneGenerationPacmans(generation);

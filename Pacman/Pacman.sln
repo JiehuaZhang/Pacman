@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacmanGame", "Pacman\PacmanGame.csproj", "{3F1F9233-6C9C-4106-8A27-75ECCDCD0A5E}"
 EndProject
@@ -14,6 +14,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebService", "WebService\WebService.csproj", "{7C743719-2D55-4B3A-9E8A-2360BA1A4F14}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmallOutput", "SmallOutput\SmallOutput.csproj", "{81E97C2A-75CA-4099-A62F-D57A8BBC1663}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{FAAB540E-CC5D-4AAB-8B16-A4961EDD92C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacmanTest", "PacmanTest\PacmanTest.csproj", "{C7AE0541-5D51-42BE-BFCB-11D88C551B7C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,8 +49,15 @@ Global
 		{81E97C2A-75CA-4099-A62F-D57A8BBC1663}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81E97C2A-75CA-4099-A62F-D57A8BBC1663}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81E97C2A-75CA-4099-A62F-D57A8BBC1663}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7AE0541-5D51-42BE-BFCB-11D88C551B7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7AE0541-5D51-42BE-BFCB-11D88C551B7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7AE0541-5D51-42BE-BFCB-11D88C551B7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7AE0541-5D51-42BE-BFCB-11D88C551B7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C7AE0541-5D51-42BE-BFCB-11D88C551B7C} = {FAAB540E-CC5D-4AAB-8B16-A4961EDD92C3}
 	EndGlobalSection
 EndGlobal

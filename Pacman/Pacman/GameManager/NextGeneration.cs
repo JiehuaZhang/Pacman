@@ -5,13 +5,13 @@ using OperationManager.DataManager;
 
 namespace PacmanGame.GameManager
 {
-    public  class NextGeneration
+    public  class NextGeneration : IGeneration
     {
-        private readonly Game _game;
-        private readonly GenerateChecker _generateChecker;
-        private readonly Reproduce _reproduce;
-        private readonly SqLiteConnection _sqLiteConnection;
-        public NextGeneration(Game game, GenerateChecker generateChecker, Reproduce reproduce, SqLiteConnection sqLiteConnection)
+        private readonly IGame _game;
+        private readonly IGenerateChecker _generateChecker;
+        private readonly IReproduce _reproduce;
+        private readonly ISqLiteConnection _sqLiteConnection;
+        public NextGeneration(IGame game, IGenerateChecker generateChecker, IReproduce reproduce, ISqLiteConnection sqLiteConnection)
         {
             _game = game;
             _generateChecker = generateChecker;

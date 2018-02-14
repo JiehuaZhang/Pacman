@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -9,8 +10,6 @@ namespace CommonType.Const
 {
     public class PacmanConst
     {
-        //public const string SQLDatabaseName = "database.db";
-        public const string SQLDatabaseName = "databaseNew.db";
         public const string SQLTableName = "Pacmans";
         public const string SQLCreatePacmanTalbeQuery = @"CREATE TABLE IF NOT EXISTS  Pacmans(
                                                           ID INTEGER PRIMARY KEY AUTOINCREMENT,

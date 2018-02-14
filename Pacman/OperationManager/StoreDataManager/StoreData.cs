@@ -16,8 +16,8 @@ namespace OperationManager.StoreDataManager
 {
     public class StoreData : IStoreData
     {
-        private readonly SqLiteConnection _sqLiteConnection;
-        public StoreData(SqLiteConnection sqLiteConnection)
+        private readonly ISqLiteConnection _sqLiteConnection;
+        public StoreData(ISqLiteConnection sqLiteConnection)
         {
             _sqLiteConnection = sqLiteConnection;
         }

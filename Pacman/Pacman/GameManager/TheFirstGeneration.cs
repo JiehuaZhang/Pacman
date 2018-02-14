@@ -7,11 +7,11 @@ using OperationManager.StrategyManager;
 
 namespace PacmanGame.GameManager
 {
-    public  class TheFirstGeneration
+    public  class TheFirstGeneration : IGeneration
     {
-        private readonly Game _game;
-        private readonly GenerateChecker _generateChecker;
-        public  TheFirstGeneration(Game game, GenerateChecker generateChecker)
+        private readonly IGame _game;
+        private readonly IGenerateChecker _generateChecker;
+        public  TheFirstGeneration(IGame game, IGenerateChecker generateChecker)
         {
             _game = game;
             _generateChecker = generateChecker;
