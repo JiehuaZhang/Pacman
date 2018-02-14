@@ -69,7 +69,7 @@ namespace PacmanTest
                 new []{10,8},
                 new []{10,10}
 
-            };
+            }; //check out Pacman.xlsx
 
             Assert.IsTrue(beanPosition.Count ==50);
 
