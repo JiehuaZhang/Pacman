@@ -36,7 +36,7 @@ namespace PacmanTest
                 new []{4,6},
                 new []{4,10},
                 new []{5,2},
-                new []{5,3},
+                new []{5,4},
                 new []{5,8},
                 new []{5,9},
                 new []{6,1},
@@ -83,8 +83,10 @@ namespace PacmanTest
 
             var testposition = new CheckPosition {Position = new[] {5, 6}};
             var testposition2 = new CheckPosition {Position = new[] {7, 4}};
+            var testposition3 = new CheckPosition {Position = new[] {4, 4}};
             Assert.IsTrue(string.Join("," ,checker.Checks[testposition]) == string.Join(",",new[] { 1,0,0,0,0}));
             Assert.IsTrue(string.Join("," ,checker.Checks[testposition2]) == string.Join(",",new[] { 0,1,1,1,1}));
+            Assert.IsTrue((string.Join(",", checker.Checks[testposition3])== string.Join(",", new[]{0,0,1,1,0})));
         }
 
         [TestMethod]

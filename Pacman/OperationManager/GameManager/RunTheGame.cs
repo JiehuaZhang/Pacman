@@ -13,6 +13,13 @@ namespace OperationManager.GameManager
 {
     public  class RunTheGame : IRunTheGame
     {
+        private readonly IRandomProvider _randomPro;
+
+        public RunTheGame(IRandomProvider randomPro)
+        {
+            _randomPro = randomPro;
+        }
+
         public  void GetPoints(ref Pacman[] pacmans, Checker checker, int checkerindex)
         {
             for (var i=0;i<pacmans.Length;i++)
@@ -36,9 +43,9 @@ namespace OperationManager.GameManager
                 var allSituation = checker.Checks[currentPosition];
                 var action = (Actions)pacman.Strategy.Lines.FirstOrDefault(x => x.Key == string.Join("", allSituation)).Value;
                 var rnd = new Random();
-                while (action == Actions.Random)
+                while (action == Actions.Random || action == Actions.Freeze)
                 {
-                    action =(Actions)rnd.Next(7);
+                    action =(Actions)_randomPro.GetNext(rnd,7);
                 }
 
                 switch (action)

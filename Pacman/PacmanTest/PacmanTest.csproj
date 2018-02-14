@@ -66,6 +66,7 @@
     <Compile Include="ReportGenerateTest.cs" />
     <Compile Include="ReproduceTest.cs" />
     <Compile Include="GenerateCheckerTest.cs" />
+    <Compile Include="GamePointsTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

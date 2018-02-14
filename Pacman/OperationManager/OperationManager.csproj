@@ -74,6 +74,8 @@
     <Compile Include="DataManager\ISqLiteConnection.cs" />
     <Compile Include="DataManager\SqliteConnection.cs" />
     <Compile Include="GameManager\GameResult.cs" />
+    <Compile Include="GameManager\IRandomProvider.cs" />
+    <Compile Include="GameManager\RandomProvider.cs" />
     <Compile Include="GameManager\RunTheGame.cs" />
     <Compile Include="Helper\IntHelper.cs" />
     <Compile Include="Helper\RandomHelper.cs" />

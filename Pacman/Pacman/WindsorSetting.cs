@@ -27,6 +27,7 @@ namespace PacmanGame
             container.Register(Component.For<IGameResult>().ImplementedBy<GameResult>());
             container.Register(Component.For<IRunTheGame>().ImplementedBy<RunTheGame>());
             container.Register(Component.For<IUpgradeFromOldDatabase>().ImplementedBy<UpgradeFromOldDatabase>());
+            container.Register(Component.For<IRandomProvider>().ImplementedBy<RandomProvider>());
             container.Register(Component.For<IGeneration>().ImplementedBy<TheFirstGeneration>().Named("First"));
             container.Register(Component.For<IGeneration>().ImplementedBy<NextGeneration>().Named("Next"));
             //container.Register(Component.For<>().ImplementedBy<>());
