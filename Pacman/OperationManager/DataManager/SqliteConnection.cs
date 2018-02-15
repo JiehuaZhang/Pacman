@@ -11,7 +11,8 @@ namespace OperationManager.DataManager
 {
     public class SqLiteConnection : ISqLiteConnection
     {
-        private readonly string SQLDatabaseName = ConfigurationManager.AppSettings["DatabaseName"];
+        //private readonly string SQLDatabaseName = ConfigurationManager.AppSettings["DatabaseName"];
+        private readonly string SQLDatabaseName = "databaseNew.db";
         public bool IfTableExist()
         {
             bool res;

@@ -77,7 +77,8 @@ namespace PacmanTest
 
             foreach (var key in checker.Checks.Keys)
             {
-                var situationStr = $"Up: {checker.Checks[key][0]} Right:{checker.Checks[key][1]} Button:{checker.Checks[key][2]} Left: {checker.Checks[key][3]} Center:{checker.Checks[key][4]}";
+                //var situationStr = $"Up: {checker.Checks[key][0]} Right:{checker.Checks[key][1]} Button:{checker.Checks[key][2]} Left: {checker.Checks[key][3]} Center:{checker.Checks[key][4]}";
+                var situationStr = $"{checker.Checks[key][0]}{checker.Checks[key][1]}{checker.Checks[key][2]}{checker.Checks[key][3]}{checker.Checks[key][4]}";
                 Console.WriteLine($"Position: {key.Position[0]}:{key.Position[1]}  Situation: {situationStr}");
             }
 
