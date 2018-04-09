@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using OperationManager.CheckerManager;
 using OperationManager.DataManager;
 using OperationManager.GameManager;
+using OperationManager.Interface;
 
 namespace SmallOutput
 {
     class Program
     {
         private static readonly GenerateChecker GenerateChecker = new GenerateChecker();
-        private static readonly RunTheGame RunTheGame = new RunTheGame();
+        private static readonly IRunTheGame RunTheGame = new RunTheGame(new RandomProvider());
         static void Main(string[] args)
         {
             Console.WriteLine("What do you want?");
@@ -43,7 +44,7 @@ namespace SmallOutput
                      
                     var generate = pacmanArr[0];
                     var pacmanOrder = pacmanArr[1];
-                    var runAStrategy = new RunAStrategy(new RunTheGame(), new SqLiteConnection());
+                    var runAStrategy = new RunAStrategy(new RunTheGame(new RandomProvider()), new SqLiteConnection());
                     Console.WriteLine( runAStrategy.RunAStartegyToGetPoint(Convert.ToInt32(generate), Convert.ToInt32(pacmanOrder), position,checker));
                 }
             }

@@ -29,7 +29,7 @@ namespace WebService.Providers
 
         public string GetStartPosition()
         {
-            var runTheGame = new RunTheGame();
+            var runTheGame = new RunTheGame(new RandomProvider());
             StartPosition = runTheGame.FindStartCheck().Position.JoinStrings(string.Empty);
             return StartPosition;
         }
